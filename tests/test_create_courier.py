@@ -2,7 +2,7 @@ import allure
 import pytest
 import requests
 
-import helpers
+from helpers import Helpers
 from endpoints import EndpointsUrl
 
 
@@ -44,7 +44,7 @@ class TestCreateCourier:
     @allure.description('Проверяем ошибку создания курьера при отсутствии одного из обязательных полей')
     @pytest.mark.parametrize('deleted_field', ['login', 'password'])
     def test_create_courier_with_empty_field(self, deleted_field):
-        login, password, first_name = helpers.generate_unregistered_courier()
+        login, password, first_name = Helpers.generate_unregistered_courier()
         payload = {
             'login': login,
             'password': password,

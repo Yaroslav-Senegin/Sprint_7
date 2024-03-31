@@ -12,14 +12,14 @@ class TestCreateOrder:
     @pytest.mark.parametrize('color', [["BLACK"], ["GREY"], ["BLACK", "GREY"], None])
     def test_create_order(self, color):
         payload = {
-            "firstName": "Naruto",
-            "lastName": "Uchiha",
-            "address": "Konoha, 142 apt.",
+            "firstName": "Иван",
+            "lastName": "Иванов",
+            "address": "ул. Мира, д.1",
             "metroStation": 4,
-            "phone": "+7 800 355 35 35",
+            "phone": "+7 913 123 45 67",
             "rentTime": 5,
-            "deliveryDate": "2020-06-06",
-            "comment": "Saske, come back to Konoha",
+            "deliveryDate": "2024-04-06",
+            "comment": "оставить у двери",
             "color": color
         }
         response = requests.post(EndpointsUrl.ORDER, json=payload)

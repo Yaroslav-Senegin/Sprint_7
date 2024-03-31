@@ -2,12 +2,12 @@ import pytest
 import requests
 
 from endpoints import EndpointsUrl
-import helpers
+from helpers import Helpers
 
 
 @pytest.fixture
 def unregistered_courier():
-    login, password, first_name = helpers.generate_unregistered_courier()
+    login, password, first_name = Helpers.generate_unregistered_courier()
     payload = {
         'login': login,
         'password': password,
@@ -16,7 +16,7 @@ def unregistered_courier():
 
     yield payload
 
-    del payload['firstName']
+#    del payload['firstName']
     response = requests.post(EndpointsUrl.LOGIN, data=payload)
     courier_id = response.json()["id"]
     requests.delete(f'{EndpointsUrl.COURIER}{courier_id}')
@@ -24,7 +24,7 @@ def unregistered_courier():
 
 @pytest.fixture
 def registered_courier():
-    login, password, first_name = helpers.register_new_courier_and_return_login_password()
+    login, password, first_name = Helpers.register_new_courier_and_return_login_password()
     payload = {
         'login': login,
         'password': password

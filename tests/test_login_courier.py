@@ -2,7 +2,7 @@ import pytest
 import requests
 import allure
 
-import helpers
+from helpers import Helpers
 from endpoints import EndpointsUrl
 
 
@@ -38,7 +38,7 @@ class TestLoginCourier:
     @allure.title('Ошибка авторизации')
     @allure.description('Проверка авторизации несущетвующего курьера')
     def test_login_unregistered_courier(self):
-        login, password, first_name = helpers.generate_unregistered_courier()
+        login, password, first_name = Helpers.generate_unregistered_courier()
         payload = {
             'login': login,
             'password': password
