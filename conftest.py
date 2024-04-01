@@ -16,7 +16,6 @@ def unregistered_courier():
 
     yield payload
 
-#    del payload['firstName']
     response = requests.post(EndpointsUrl.LOGIN, data=payload)
     courier_id = response.json()["id"]
     requests.delete(f'{EndpointsUrl.COURIER}{courier_id}')
